@@ -2,7 +2,7 @@ package com.guerra.hrpayroll.services;
 
 import com.guerra.hrpayroll.entities.Payment;
 import com.guerra.hrpayroll.entities.Worker;
-import com.guerra.hrpayroll.feignclientes.WorkerFeignClient;
+import com.guerra.hrpayroll.feignclients.WorkerFeignClient;
 import org.springframework.stereotype.Service;
 
 @Service
