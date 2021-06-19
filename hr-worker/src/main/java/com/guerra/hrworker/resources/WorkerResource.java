@@ -32,7 +32,7 @@ public class WorkerResource {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Worker> findAll(){
+    public List<Worker> findAll() {
         List<Worker> list = workerRepository.findAll();
 
         return list;
