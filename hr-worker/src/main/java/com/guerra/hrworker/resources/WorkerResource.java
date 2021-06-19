@@ -19,7 +19,7 @@ import java.util.Optional;
 @RequestMapping(value = "/workers")
 public class WorkerResource {
 
-    private static Logger logger = LoggerFactory.getLogger(WorkerResource.class);
+    private static final Logger logger = LoggerFactory.getLogger(WorkerResource.class);
 
     private final Environment env;
 
@@ -42,7 +42,7 @@ public class WorkerResource {
     @ResponseStatus(HttpStatus.OK)
     public Worker findById(@PathVariable Long id) throws Exception {
 
-        logger.info("PORT = " + env.getProperty("local.server.port"));
+        logger.info("PORT = {}", env.getProperty("local.server.port"));
 
         Optional<Worker> worker = workerRepository.findById(id);
 
