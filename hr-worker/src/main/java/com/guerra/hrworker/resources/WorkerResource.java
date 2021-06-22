@@ -4,6 +4,7 @@ import com.guerra.hrworker.entities.Worker;
 import com.guerra.hrworker.repositories.WorkerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RefreshScope
 @RequestMapping(value = "/workers")
 public class WorkerResource {
 
