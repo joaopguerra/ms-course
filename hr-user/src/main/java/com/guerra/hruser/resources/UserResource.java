@@ -2,6 +2,8 @@ package com.guerra.hruser.resources;
 
 import com.guerra.hruser.entities.User;
 import com.guerra.hruser.repositories.UserRepository;
+import com.guerra.hruser.specifications.UserSpecification;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,9 +35,14 @@ public class UserResource {
 
     @GetMapping(value = "/search")
     @ResponseStatus(HttpStatus.OK)
-    public User findByEmail(@RequestParam String email) {
+    public Optional<User> findByEmail(@RequestParam String email) throws Exception {
 
-        User user = userRepository.findByEmail(email);
+        Specification<User> spec = UserSpecification.withEmail(email);
+        Optional<User> user = userRepository.findOne(spec);
+
+        if(!user.isPresent()) {
+            throw new Exception();
+        }
 
         return user;
     }
